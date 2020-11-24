@@ -1,15 +1,15 @@
 ANSWERS = {
     535: {
-        "StudentId": "2362",
-        "AccessToken": "s*5x8Rb@",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 535,
         "TestIds": [
-            4335,
-            4328,
-            4331
+            2689,
+            2695,
+            5659
         ],
         "Answers": [
-            3,
+            1,
             2,
             1
         ],
@@ -21,8 +21,8 @@ ANSWERS = {
         "Sem": 1
     },
     393: {
-        "StudentId": "2362",
-        "AccessToken": "vR%Zj8T*",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 393,
         "TestIds": [
             2689,
@@ -42,8 +42,8 @@ ANSWERS = {
         "Sem": 1
     },
     398: {
-        "StudentId": "2355",
-        "AccessToken": "RPtQF$2U",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 398,
         "TestIds": [
             2741,
@@ -63,18 +63,18 @@ ANSWERS = {
         "Sem": 1
     },
     408: {
-        "StudentId": "2355",
-        "AccessToken": "4GA%$M3k",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 408,
         "TestIds": [
-            4411,
-            2809,
-            2811
+            2741,
+            5675,
+            5677
         ],
         "Answers": [
-            1,
-            1,
-            2
+            3,
+            3,
+            1
         ],
         "StartTestDT": "2020-10-27 14:39:28",
         "FinishTestDT": "2020-10-27 14:43:42",
@@ -84,18 +84,18 @@ ANSWERS = {
         "Sem": 1
     },
     508: {
-        "StudentId": "2355",
-        "AccessToken": "4GA%$M3k",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 508,
         "TestIds": [
-            3704,
-            5702,
-            3703
+            2741,
+            5675,
+            5677
         ],
         "Answers": [
             3,
-            2,
-            2
+            3,
+            1
         ],
         "StartTestDT": "2020-10-27 14:48:52",
         "FinishTestDT": "2020-10-27 14:52:43",
@@ -105,18 +105,18 @@ ANSWERS = {
         "Sem": 1
     },
     609: {
-        "StudentId": "2355",
-        "AccessToken": "4GA%$M3k",
+        "StudentId": None,
+        "AccessToken": None,
         "TopicId": 609,
         "TestIds": [
-            5743,
-            5738,
-            5742
+            2741,
+            5675,
+            5677
         ],
         "Answers": [
-            1,
-            4,
-            4
+            3,
+            3,
+            1
         ],
         "StartTestDT": "2020-10-27 14:59:21",
         "FinishTestDT": "2020-10-27 15:01:41",
@@ -124,7 +124,84 @@ ANSWERS = {
         "ErrorCount": 0,
         "Year": 2020,
         "Sem": 1
+    },
+    418: {
+        "StudentId": None,
+        "AccessToken": None,
+        "TopicId": 609,
+        "TestIds": [
+            2741,
+            5675,
+            5677
+        ],
+        "Answers": [
+            3,
+            3,
+            1
+        ],
+        "StartTestDT": "2020-11-24 20:15:36",
+        "FinishTestDT": "2020-11-24 20:15:44",
+        "Rating": 0,
+        "ErrorCount": 0,
+        "Year": 2020,
+        "Sem": 1
+    },
+    550: {
+        "StudentId": None,
+        "AccessToken": None,
+        "TopicId": 609,
+        "TestIds": [
+            2741,
+            5675,
+            5677
+        ],
+        "Answers": [
+            3,
+            3,
+            1
+        ],
+        "StartTestDT": "2020-11-24 20:25:15",
+        "FinishTestDT": "2020-11-24 20:28:34",
+        "Rating": 0,
+        "ErrorCount": 0,
+        "Year": 2020,
+        "Sem": 1
+    },
+    424: {
+        "StudentId": None,
+        "AccessToken": None,
+        "TopicId": 609,
+        "TestIds": [
+            2741,
+            5675,
+            5677
+        ],
+        "Answers": [
+            3,
+            3,
+            1
+        ],
+        "StartTestDT": "2020-11-24 20:35:21",
+        "FinishTestDT": "2020-11-24 20:36:41",
+        "Rating": 0,
+        "ErrorCount": 0,
+        "Year": 2020,
+        "Sem": 1
     }
 }
 
-print(ANSWERS)
+import random
+
+
+def generate_test(test,id,token):
+    ans = ANSWERS[test]
+    ans["StudentId"] = id
+    ans["AccessToken"] = token
+    ans["StartTestDT"] = ans["StartTestDT"][:-1]+str(random.randint(0,9))
+    ans["FinishTestDT"] = ans["FinishTestDT"][:-1] + str(random.randint(0,9))
+    return ans
+
+
+if __name__ == '__main__':
+    print(ANSWERS)
+    print(generate_test(test=424,id="0", token="test"))
