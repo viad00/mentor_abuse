@@ -53,13 +53,13 @@ def get_not_passed_tests(user):
     return tests
 
 
-def pass_test(test,user):
-    new_test = [generate_test(test=test,id=user["id"],token=user["token"])]
+def pass_test(test,user, not_was):
+    new_test = [generate_test(test=test,id=user["id"],token=user["token"],not_was=not_was)]
     resp = requests.post(f'{BASE}/app_write_test_result.php', headers=HEAD, json=new_test, cookies=JAR)
     print(test, resp.text)
 
 
-def user_routine(user, password):
+def user_routine(user, password, not_was):
     print(f'Logging in {user}')
     try:
         user = login(username=user, password=password)
@@ -75,7 +75,7 @@ def user_routine(user, password):
     for test in tests_to_pass:
         print(f'Passing {test} for {user["name"]}')
         try:
-            pass_test(test=test,user=user)
+            pass_test(test=test,user=user, not_was=not_was)
         except Exception as e:
             print(f'Passing test {test} failed with {e}')
         time.sleep(30)

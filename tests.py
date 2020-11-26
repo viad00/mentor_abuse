@@ -190,18 +190,55 @@ ANSWERS = {
     }
 }
 
+NOT_WAS = {
+    393: {
+        "StartTestDT": "2020-11-24 19:05:11",
+        "FinishTestDT": "2020-11-24 19:09:07",
+    },
+    398: {
+        "StartTestDT": "2020-11-24 19:35:10",
+        "FinishTestDT": "2020-11-24 19:39:56",
+    },
+    408: {
+        "StartTestDT": "2020-11-24 19:45:28",
+        "FinishTestDT": "2020-11-24 19:48:42",
+    },
+    508: {
+        "StartTestDT": "2020-11-24 19:55:52",
+        "FinishTestDT": "2020-11-24 19:59:43",
+    },
+    609: {
+        "StartTestDT": "2020-11-24 20:05:21",
+        "FinishTestDT": "2020-11-24 20:09:41",
+    },
+    418: {
+        "StartTestDT": "2020-11-24 20:15:36",
+        "FinishTestDT": "2020-11-24 20:15:44",
+    },
+    550: {
+        "StartTestDT": "2020-11-24 20:25:15",
+        "FinishTestDT": "2020-11-24 20:28:34",
+    },
+    424: {
+        "StartTestDT": "2020-11-24 20:35:21",
+        "FinishTestDT": "2020-11-24 20:36:41",
+    }
+}
+
 import random
 
 
-def generate_test(test,id,token):
+def generate_test(test,id,token,not_was=False):
     ans = ANSWERS[test]
     ans["StudentId"] = id
     ans["AccessToken"] = token
+    if not_was:
+        ans["StartTestDT"] = NOT_WAS[test]["StartTestDT"]
+        ans["FinishTestDT"] = NOT_WAS[test]["FinishTestDT"]
     ans["StartTestDT"] = ans["StartTestDT"][:-1]+str(random.randint(0,9))
     ans["FinishTestDT"] = ans["FinishTestDT"][:-1] + str(random.randint(0,9))
     return ans
 
 
 if __name__ == '__main__':
-    print(ANSWERS)
-    print(generate_test(test=424,id="0", token="test"))
+    print(generate_test(test=550,id="0", token="test", not_was=True))
