@@ -187,6 +187,27 @@ ANSWERS = {
         "ErrorCount": 0,
         "Year": 2020,
         "Sem": 1
+    },
+    429: {
+        "StudentId": None,
+        "AccessToken": None,
+        "TopicId": 429,
+        "TestIds": [
+            2741,
+            5675,
+            5677
+        ],
+        "Answers": [
+            3,
+            3,
+            1
+        ],
+        "StartTestDT": "2020-12-01 15:05:21",
+        "FinishTestDT": "2020-12-01 15:09:41",
+        "Rating": 0,
+        "ErrorCount": 0,
+        "Year": 2020,
+        "Sem": 1
     }
 }
 
@@ -232,7 +253,7 @@ def generate_test(test,id,token,not_was=False):
     ans = ANSWERS[test]
     ans["StudentId"] = id
     ans["AccessToken"] = token
-    if not_was:
+    if not_was and test in NOT_WAS:
         ans["StartTestDT"] = NOT_WAS[test]["StartTestDT"]
         ans["FinishTestDT"] = NOT_WAS[test]["FinishTestDT"]
     ans["StartTestDT"] = ans["StartTestDT"][:-1]+str(random.randint(0,9))
@@ -241,4 +262,4 @@ def generate_test(test,id,token,not_was=False):
 
 
 if __name__ == '__main__':
-    print(generate_test(test=550,id="0", token="test", not_was=True))
+    print(generate_test(test=666,id="0", token="test", not_was=True))
